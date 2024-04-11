@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import './App.css';
 
-function Home() {
-  const [completed, setCompleted] = useState(false);
-  const [tarefa, setTarefa] = useState('');
-
-  useEffect(() => {
-    if (completed) {
-      setTarefa('Parabéns! Você concluiu a tarefa!');
-    }
-  }, [completed]);
-
+function App() {
   return (
-    <div>
-      <h1>Tarefa</h1>
-      <h3>{tarefa}</h3>
-      <p>Conclua a tarefa</p>
-      <button onClick={() => setCompleted(true)}>Concluir Tarefa</button>
-    </div>
-  );
+    <>
+    <h1 className="text-3xl font-bold text-red-500 underline text-center">
+      Hello world!
+    </h1>
+    </>
+);
 }
-
-export default Home;
+export default App;

@@ -7,8 +7,7 @@ import { toastAlerta } from '../../../utils/toastAlerta';
 
 function FormularioTema() {
   const [tema, setTema] = useState<Tema>({} as Tema);
-
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>();
 
@@ -34,8 +33,6 @@ function FormularioTema() {
       ...tema,
       [e.target.name]: e.target.value
     })
-
-    console.log(JSON.stringify(tema))
   }
 
   async function gerarNovoTema(e: ChangeEvent<HTMLFormElement>) {
@@ -94,7 +91,7 @@ function FormularioTema() {
       toastAlerta('Você precisa estar logado', 'info');
       navigate('/login');
     }
-  }, [token]);
+  }, [token, navigate]); // Added navigate as a dependency
 
   return (
     <div className="container flex flex-col items-center justify-center mx-auto">

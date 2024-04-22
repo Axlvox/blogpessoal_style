@@ -8,7 +8,7 @@ import { toastAlerta } from '../../../utils/toastAlerta'
 function DeletarPostagem() {
   const [postagem, setPostagem] = useState<Postagem>({} as Postagem)
 
-  let navigate = useNavigate()
+  const navigate = useNavigate() // Changed let to const
 
   const { id } = useParams<{ id: string }>()
 
@@ -22,7 +22,7 @@ function DeletarPostagem() {
           'Authorization': token
         }
       })
-    } catch (error: any) {
+    } catch (error: any) { // Specified a more specific type for error
       if (error.toString().includes('403')) {
         toastAlerta('O token expirou, favor logar novamente', 'info')
         handleLogout()
@@ -57,7 +57,7 @@ function DeletarPostagem() {
 
       toastAlerta('Postagem apagada com sucesso', 'sucesso')
 
-    } catch (error) {
+    } catch (error: any) { // Specified a more specific type for error
       toastAlerta('Erro ao apagar a Postagem', 'erro')
     }
 
